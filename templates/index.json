@@ -320,12 +320,6 @@
         "padding_bottom": 36
       }
     },
-    "test_section_Gtyabi": {
-      "type": "test-section",
-      "settings": {
-        "heading_text": "Thank you for visiting!"
-      }
-    },
     "custom_testimonials_slider_TrATXz": {
       "type": "custom-testimonials-slider",
       "blocks": {
@@ -401,11 +395,17 @@
       "settings": {
         "caption_text": "Testimonials",
         "title": "What Our Customers Say",
-        "auto_play": 5,
+        "auto_play": 3,
         "color_scheme": "",
         "content_background_color": "#313131",
         "padding_top": 36,
         "padding_bottom": 36
+      }
+    },
+    "test_section_Gtyabi": {
+      "type": "test-section",
+      "settings": {
+        "heading_text": "Thank you for visiting!"
       }
     }
   },

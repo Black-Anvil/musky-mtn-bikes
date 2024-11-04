@@ -417,11 +417,12 @@
         "heading_text": "Thank you for visiting!"
       }
     },
-    "countdown_KM3JzW": {
+    "countdown_Depkbf": {
       "type": "countdown",
       "settings": {
         "text": "Spring Sale! Save up to 20%",
-        "final_date": "May 25, 2026 16:37:52 EST"
+        "final_date": "May 25, 2026 16:37:52 EST",
+        "final_text": "Sorry! This sale has ended."
       }
     }
   },
@@ -436,6 +437,6 @@
     "featured_blog_br3dte",
     "custom_testimonials_slider_TrATXz",
     "test_section_Gtyabi",
-    "countdown_KM3JzW"
+    "countdown_Depkbf"
   ]
 }

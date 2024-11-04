@@ -25,7 +25,7 @@ class CountDownTimer extends HTMLElement {
 
     if (timeRemaining <= 0) {
         clearInterval(this.interval);
-        this.countdownText.innerText = 'The sale has ended.';
+        this.countdownText.innerText = this.countdownText.dataset.finalText;
         return;
     }
 

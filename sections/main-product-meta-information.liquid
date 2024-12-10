@@ -859,7 +859,11 @@ const batteryTxt = document.querySelector('#meta-information-battery');
 const breaksTxt = document.querySelector('#meta-information-breaks');
 
 function updateUI(variantOption){
-
+    weightTxt.innerText = variantMetaData[variantOption].weight;
+    rangeTxt.innerText = variantMetaData[variantOption].range;
+    speedTxt.innerText = variantMetaData[variantOption].speed;
+    batteryTxt.innerText = variantMetaData[variantOption].battery;
+    breaksTxt.innerText = variantMetaData[variantOption].breaks;
 }
 
 
@@ -868,7 +872,10 @@ const initialVariantOption = document.querySelector('#meta-information-table').d
 updateUI(initialVariantOption);
 
 //subscribe to variant changes and update UI based on new selection
-
+document.addEventListener('afterVariantChange', (event) => {
+    const currentVariantOption = event.detail.newVariant.option1;
+    updateUI(currentVariantOption);
+});
 
 </script>
 

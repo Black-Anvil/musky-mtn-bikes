@@ -4,7 +4,7 @@ class AvailabilityStatus extends HTMLElement {
 
     //Initial values
     this.selectedLocation = "New York";
-    this.selectedVariantColor =  "Navy Blue"
+    this.selectedVariantColor =  this.dataset.initialVariantColor;
     this.selectedVariantStockData = null;
 
     //UI Elements
@@ -27,12 +27,12 @@ class AvailabilityStatus extends HTMLElement {
     );
 
     //initialize! 
-    
+    this.updateAvailability();
   }
 
   handleVariantChange(event) {
     /* update  this.selectedVariantColor based on the Shopify variant change-event */
-   
+    this.selectedVariantColor = event.detail.newVariant.options[0];
     this.updateAvailability();
   }
 

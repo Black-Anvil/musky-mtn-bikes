@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": {
+      "type": "product-compare",
+      "settings": {
+        "header": "Compare bikes:",
+        "padding_top": 28,
+        "padding_bottom": 28,
+        "collection": "bikes"
+      }
+    }
+  },
+  "order": ["main"]
+}

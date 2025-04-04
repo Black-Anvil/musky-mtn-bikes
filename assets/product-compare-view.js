@@ -24,16 +24,18 @@ class ProductCompareView extends HTMLElement {
   async handleAddProduct() {
     /* 1) get the selected product handle from the dropdown */
 
-    const productHandle = "?";
+    const productHandle = this.productSelect.value;
     console.log(`attempting to add product ${productHandle}`);
     if (!productHandle) return;
 
     /* 4) Later add a check to see if the product is already in the comparison container; if yes, return */
     //add check here
+    if (this.comparisonContainer.querySelector(`#${productHandle}`)) {
+        return;
+    }
 
     /* 2) fetch the product card for the selected product */
 
-    /*
     const productCard = await this.fetchProductCardSection(productHandle);
 
     if (!productCard || !(productCard instanceof Node)) {
@@ -47,25 +49,26 @@ class ProductCompareView extends HTMLElement {
     console.log("Now adding product card to comparison container");
 
     this.comparisonContainer.appendChild(productCard);
-    */
 
     /* 3) disable the added product in our dropdown */
-    //this.toggleSelectOption(productHandle);
+    this.toggleSelectOption(productHandle);
   }
 
   // Fetch product details and add to comparison container
   async fetchProductCardSection(productHandle) {
     try {
       /* 2.1) build the url to fetch our section, based on the productHandle */
-      const sectionApiUrl = `?`;
+      const sectionApiUrl = `/products/${productHandle}?section_id=compare-product-card`;
 
       console.log(sectionApiUrl, "Url to fetch Section");
       const response = await fetch(sectionApiUrl);
 
       /* 2.2) Extract the html-text from the response and parse it into a DOM object using DOMParser */
-
+        const htmlText = await response.text();
+        const parser = new DOMParser;
+        const html = parser.parseFromString(htmlText, 'text/html');
       /* 2.3) Extract the product card from the DOM object and return it*/
-      /*const productCard = ???
+        const productCard = html.querySelector(`#${productHandle}`);
 
       console.log(productCard, "The new product card element");
 
@@ -76,7 +79,7 @@ class ProductCompareView extends HTMLElement {
         return null;
       }
       return productCard;
-      */
+    
     } catch (error) {
       console.error("Error fetching product card:", error);
       return null;
@@ -91,8 +94,9 @@ class ProductCompareView extends HTMLElement {
     /* 5) remove product from our container and toggle the select option */
 
     //add code here
-
-    //this.toggleSelectOption(removehandle);
+    const itemToRemove = this.comparisonContainer.querySelector(`#${removehandle}`);
+    itemToRemove.remove();
+    this.toggleSelectOption(removehandle);
   }
 
   toggleSelectOption(productHandle) {
@@ -107,6 +111,13 @@ class ProductCompareView extends HTMLElement {
     */
 
     //add code here
+    if (option.disabled === true) {
+        option.disabled = false;
+        option.style.color = "";
+    } else {
+        option.disabled = true;
+        option.style.color = "gray";
+    }
   }
 }
 
